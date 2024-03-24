@@ -1,0 +1,70 @@
+◾️アクセストークン作成 Here is your login link in case browser did not open
+https://supabase.com/dashboard/cli/login?session_id=7d3dfdb9-1906-4037-b833-63e75c892134&token_name=cli_kashiwagijun@kashiwaginoMacBook-Air.local_1710206419&public_key=04bf4bf3fe7499718d129d9315821accd892498ecfed441ea4e958947d339b61befa9e856024fd0d7ef1d999fe8595dc50106a5dc31ea66dc73c27823f8fe16ef6
+Token cli_kashiwagijun@kashiwaginoMacBook-Air.local_1710206419 created
+successfully. ◾️supabase情報 Project Name: nextjs-supabase-auth Pass:
+?wf#Y&@3@W8pgfZ ◾️supabase接続
+<!-- アクセストークン発行 -->
+npx supabase login
+
+<!-- 初期化 -->
+npx supabase init
+
+<!-- 接続 -->
+npx supabase link --project-ref リファレンスID （npx supabase link --project-ref
+uioujoiendushhebrbxd） ※ Project Settings > General settings > Refarence ID
+
+◾️supabaseの型をインポート
+<!-- Type Scriptの型としてインポート -->
+libフォルダを作成（app/lib）
+npx supabase gen types typescript --linked > lib/database.types.ts
+
+◾️ログイン状態を監視する設定を追記
+<!-- next.conf.mjsに追記 -->
+・サーバーアクションを有効化
+・DBに保存した画像を表示できるようにdomainsにsupabaseのドメインを追加
+（xxxx: refarenceIDとなる）
+
+/** @type {import('next').NextConfig} */
+```
+const nextConfig = {
+  experimental: {
+    serverActions: true,
+  },
+  images: {
+    domains: ['xxxx.supabase.co'],
+  }
+};
+
+export default nextConfig;
+
+```
+
+◾️ミドルウェア(※)を作成
+※リクエストがアプリケーションに到達する前に実行される関数
+app/middleware.tsを作成（詳細は割愛）
+
+◾️メインページを作成する
+app/page.tsx
+
+.
+.
+.
+
+◾️認証状態を監視
+app/component/supabaselistener.tsx
+
+
+◾️サインアップの確認メール設定
+supabaseのダッシュボードより、（Authentication > Email Template）から文言を設定
+
+◾️サインアップ動作確認
+サインアップしてみて、確認メールとログイン状態の保持ができているかを確認。
+
+◾️状態管理をする（Zustand）
+store/index.ts作成
+(関数コンポーネント内で状態を管理できる)
+
+profile情報の状態管理を追加することでどこからでもプロフィール情報を取得できるようにする。
+
+◾️認証状態を監視しているlisterを修正
+app/component/supabaselistener.tsx
