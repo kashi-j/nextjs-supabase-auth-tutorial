@@ -1,4 +1,22 @@
+本リポジトリは下記チュートリアルを参照し、作成しています。  
+https://www.youtube.com/watch?v=DWHR0jJrAp4
+
+##  機能
+- ログイン機能
+- サインアップ
+- ログアウト
+- パスワードリセット
+- メールアドレスの変更
+- パスワードの変更
+- プロフィール編集
+
+## イメージ（※プロフィール編集）
+![screencapture-localhost-3000-settings-profile-2024-03-25-10_10_01 (1)](https://github.com/kashi-j/nextjs-supabase-auth-tutorial/assets/69555348/22602174-a47b-448f-95f5-58ad341d53b4)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+<br>
+<br>
 
 ## Getting Started
 
